@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'fonts::typeface' do
+describe 'fonts::file' do
   let(:title) { 'myfont.ttf' }
   let(:params) { {
     :source => '/dev/random',
@@ -43,7 +43,7 @@ describe 'fonts::typeface' do
         it do
           expect {
             should contain_file('/usr/local/share/fonts/myfont.ttf')
-          }.to raise_error(Puppet::Error, /Must pass source to Fonts::Typeface\[myfont\.ttf\]/)
+          }.to raise_error(Puppet::Error, /Must pass source to Fonts::File\[myfont\.ttf\]/)
         end
       end
     end
