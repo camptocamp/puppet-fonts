@@ -23,7 +23,7 @@ describe 'fonts::files' do
         it do should contain_file('/usr/local/share/fonts/myfontfamily').with(
           'ensure'  => 'present',
           'source'  => '/dev/null',
-          'recurse' => true,
+          'recurse' => true
         ) end
       end
 
