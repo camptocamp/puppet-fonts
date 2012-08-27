@@ -21,7 +21,7 @@ describe 'fonts::files' do
         } }
 
         it do should contain_file('/usr/local/share/fonts/myfontfamily').with(
-          'ensure'  => 'present',
+          'ensure'  => 'directory',
           'source'  => '/dev/null',
           'recurse' => true
         ) end
@@ -30,7 +30,6 @@ describe 'fonts::files' do
       describe 'ensuring absent' do
         let(:params) { {
           :ensure => 'absent',
-          :source => '/dev/null',
         } }
 
         it { should contain_file('/usr/local/share/fonts/myfontfamily').with_ensure('absent') }
