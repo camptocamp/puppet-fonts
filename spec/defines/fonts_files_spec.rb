@@ -21,16 +21,15 @@ describe 'fonts::files' do
         } }
 
         it do should contain_file('/usr/local/share/fonts/myfontfamily').with(
-          'ensure'  => 'present',
+          'ensure'  => 'directory',
           'source'  => '/dev/null',
-          'recurse' => true,
+          'recurse' => true
         ) end
       end
 
       describe 'ensuring absent' do
         let(:params) { {
           :ensure => 'absent',
-          :source => '/dev/null',
         } }
 
         it { should contain_file('/usr/local/share/fonts/myfontfamily').with_ensure('absent') }
@@ -44,7 +43,7 @@ describe 'fonts::files' do
         it do
           expect {
             should contain_file('/usr/local/share/fonts/myfontfamily')
-          }.to raise_error(Puppet::Error, /Must pass source to Fonts::File\[myfontfamily\]/)
+          }.to raise_error(Puppet::Error, /Must pass source to Fonts::Files\[myfontfamily\]/)
         end
       end
     end
