@@ -43,7 +43,7 @@ describe 'fonts::files' do
         it do
           expect {
             should contain_file('/usr/local/share/fonts/myfontfamily')
-          }.to raise_error(Puppet::Error, /Must pass source to Fonts::File\[myfontfamily\]/)
+          }.to raise_error(Puppet::Error, /Must pass source to Fonts::Files\[myfontfamily\]/)
         end
       end
     end
