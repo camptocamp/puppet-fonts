@@ -1,4 +1,8 @@
-define fonts::file($ensure=present, $source='', $path='/usr/local/share/fonts') {
+define fonts::file(
+  $ensure=present,
+  $source='',
+  $path='/usr/local/share/fonts'
+) {
   include fonts
 
   file {"${path}/${name}":
