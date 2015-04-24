@@ -1,9 +1,9 @@
 define fonts::file(
-  $ensure=present,
-  $source='',
-  $path='/usr/local/share/fonts'
+  $ensure = present,
+  $source = undef,
+  $path   = '/usr/local/share/fonts'
 ) {
-  include fonts
+  include ::fonts
 
   file {"${path}/${name}":
     ensure => $ensure,
@@ -11,7 +11,7 @@ define fonts::file(
   }
 
   if $ensure == 'present' {
-    if $source == '' {
+    if !$source {
       fail "Must pass source to Fonts::File[${name}]"
     }
 
