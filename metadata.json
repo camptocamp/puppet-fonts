@@ -1,0 +1,36 @@
+{
+  "name": "camptocamp-fonts",
+  "version": "0.1.0",
+  "author": "Camptocamp",
+  "summary": "Puppet Fonts module",
+  "license": "Apache-2.0",
+  "source": "https://github.com/camptocamp/puppet-fonts",
+  "project_page": "https://github.com/camptocamp/puppet-fonts",
+  "issues_url": "https://github.com/camptocamp/puppet-fonts/issues",
+  "dependencies": [
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ]
+}

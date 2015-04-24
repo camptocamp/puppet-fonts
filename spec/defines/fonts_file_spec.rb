@@ -6,27 +6,28 @@ describe 'fonts::file' do
     :source => '/dev/random',
   } }
 
-  OSES.each do |os|
-    describe "When on #{os}" do
-      let(:facts) { {
-        :operatingsystem => os,
-      } }
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
 
-      it { should include_class('fonts') }
+      it { is_expected.to compile.with_all_deps }
+      it { is_expected.to contain_class('fonts') }
 
-      describe 'ensuring present with default path' do
+      context 'when ensuring present with default path' do
         let(:params) { {
           :ensure => 'present',
           :source => '/dev/null'
         } }
 
-        it do should contain_file('/usr/local/share/fonts/myfont.ttf').with(
+        it { is_expected.to contain_file('/usr/local/share/fonts/myfont.ttf').with({
           'ensure' => 'present',
-          'source' => '/dev/null'
-        ) end
+          'source' => '/dev/null',
+        } ) }
       end
 
-      describe 'ensuring absent' do
+      context 'when ensuring absent' do
         let(:params) { {
           :ensure => 'absent',
           :source => '/dev/null',
@@ -35,7 +36,7 @@ describe 'fonts::file' do
         it { should contain_file('/usr/local/share/fonts/myfont.ttf').with_ensure('absent') }
       end
 
-      describe 'missing source' do
+      context 'missing source' do
         let(:params) { {
           :ensure => 'present',
         } }

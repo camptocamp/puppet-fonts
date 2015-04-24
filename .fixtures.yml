@@ -1,0 +1,4 @@
+---
+fixtures:
+  symlinks:
+    fonts: "#{source_dir}"

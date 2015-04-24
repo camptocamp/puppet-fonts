@@ -6,21 +6,22 @@ describe 'fonts::files' do
     :source => '/dev/random',
   } }
 
-  OSES.each do |os|
-    describe "When on #{os}" do
-      let(:facts) { {
-        :operatingsystem => os,
-      } }
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
 
-      it { should include_class('fonts') }
+      it { is_expected.to compile.with_all_deps }
+      it { is_expected.to contain_class('fonts') }
 
-      describe 'ensuring present with default path' do
+      context 'ensuring present with default path' do
         let(:params) { {
           :ensure => 'present',
           :source => '/dev/null'
         } }
 
-        it do should contain_file('/usr/local/share/fonts/myfontfamily').with(
+        it do is_expected.to contain_file('/usr/local/share/fonts/myfontfamily').with(
           'ensure'  => 'directory',
           'source'  => '/dev/null',
           'recurse' => true
@@ -32,7 +33,7 @@ describe 'fonts::files' do
           :ensure => 'absent',
         } }
 
-        it { should contain_file('/usr/local/share/fonts/myfontfamily').with_ensure('absent') }
+        it { is_expected.to contain_file('/usr/local/share/fonts/myfontfamily').with_ensure('absent') }
       end
 
       describe 'missing source' do
@@ -42,7 +43,7 @@ describe 'fonts::files' do
 
         it do
           expect {
-            should contain_file('/usr/local/share/fonts/myfontfamily')
+            is_expected.to contain_file('/usr/local/share/fonts/myfontfamily')
           }.to raise_error(Puppet::Error, /Must pass source to Fonts::Files\[myfontfamily\]/)
         end
       end

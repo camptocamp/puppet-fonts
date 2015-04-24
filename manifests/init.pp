@@ -1,5 +1,6 @@
 class fonts {
-  exec {'fc-cache':
+  exec { 'fc-cache':
     refreshonly => true,
+    path        => $::path,
   }
 }
