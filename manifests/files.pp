@@ -14,6 +14,9 @@ define fonts::files(
   file {"${path}/${name}":
     ensure  => $_ensure,
     source  => $source,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     recurse => true,
     notify  => Exec['fc-cache'],
   }
